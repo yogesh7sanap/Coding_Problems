@@ -12,8 +12,26 @@ class EvenOdd:
             else: 
                   return False
 
+# Leap Year ----------------------
 
-# ----------------------
+class LeapYear:
+	def __init__(self, n):
+		self.n = n
+
+	def check(self):
+            # year=self.n
+            if (self.n % 4) ==0 :
+                  if (self.n % 100)==0:
+                        if (self.n % 400)==0 :
+                              return True
+                        else:
+                              return False
+                  else:
+                        return True
+            else:
+                  return False
+
+            
 # ----------------------
 # ----------------------
 
