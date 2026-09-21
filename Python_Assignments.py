@@ -201,7 +201,40 @@ class Armstrong:
 # ----------------------
 
 
-# ======================================================
+# Python Refresher 2 ======================================================
+
+# Pattern 3 ----------------------
+
+class Pattern:
+	def __init__(self, n):
+		self.n= n
+
+	def solve(self):
+          list_of_pattern_strings = []
+          for i in range (1, self.n+1):
+               row_string = ''
+               for j in range (1,i+1):
+                    single_char = chr(96+j)
+                    row_string= row_string + single_char
+
+               list_of_pattern_strings.append(row_string)
+               
+          return list_of_pattern_strings
+
+
+
+# Pattern 4 ----------------------
+
+
+
+
+# Pattern 5 ----------------------
+
+
+
+
+# 123 Pattern ----------------------
+
 
 # ======================================================
 # ======================================================
