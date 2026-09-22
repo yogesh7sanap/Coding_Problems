@@ -225,15 +225,104 @@ class Pattern:
 
 # Pattern 4 ----------------------
 
+class Pattern:
+    def __init__(self, n):
+        self.n= n
+        
+    def solve(self):
+        ans = []
+        for i in range(self.n):
+            s = ""
+            for j in range(self.n-i):
+                s+="*"
+            ans.append(s)
 
+        return ans
+
+# OR [Btter time complexity]
+
+class Pattern:
+	def __init__(self, n):
+		self.n= n
+
+	def solve(self):
+          list_right_triangle_star_pattern = []
+          for i in range (self.n, 0,-1):
+               single_row = "*" * i
+               list_right_triangle_star_pattern.append(single_row)
+          return list_right_triangle_star_pattern
 
 
 # Pattern 5 ----------------------
 
+class Pattern:
+	def __init__(self, n):
+		self.n= n
 
+	def solve(self):
+          list_hollow_square_star_pattern = []
+          for i in range (1, self.n + 1):
+               single_row = ''
+               for j in range (1, self.n + 1):
+                    if i==1 or j ==1 or i == (self.n) or j == (self.n):
+                         single_row += '*'
+                    else:
+                         single_row += ' '
+               list_hollow_square_star_pattern.append(single_row)
+          
+          return list_hollow_square_star_pattern
 
 
 # 123 Pattern ----------------------
+
+# Brute Force O(n^3)
+
+class Pattern132:
+	def __init__(self, arr):
+		self.arr = arr
+
+	def solve(self):
+
+          for i in range(len(self.arr)):
+               for j in range (i+1, len(self.arr)):
+                    for k in range (j+1, len(self.arr)):
+                         if self.arr[i]< self.arr[k] and self.arr[k]< self.arr[j]:
+                              return True
+          
+          return False
+
+
+# O(n)
+
+class Pattern132:
+	def __init__(self, arr):
+		self.arr = arr
+
+	def solve(self):
+          # for storing the 3rd element
+          stack = []
+          #for getting 2nd element
+          second = float('-inf')
+
+          # traversing reversed array 
+          # Everything I've already processed is to the right of the current number [easy to find 3rd and 2nd this way].
+          for current_element in reversed(self.arr):
+
+               # found 132 pattern
+               if current_element <second:
+                    return True
+               
+               # while stack is not empty and 
+               # current element is less than last stack element
+               # assign second and pop from stack 
+               # Here we found 3rd [current_element] [which we pushed to stack after loop]
+               #  and 2nd element [second]
+               while stack and current_element > stack[-1]:
+                    second = stack.pop()
+
+               stack.append(current_element)
+          
+          return False
 
 
 # ======================================================
