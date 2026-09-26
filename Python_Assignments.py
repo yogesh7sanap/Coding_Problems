@@ -325,7 +325,50 @@ class Pattern132:
           return False
 
 
-# ======================================================
+# Functional Programming ======================================================
+
+# Function - average of 3 attributes of a class
+
+class Average:
+	def __init__(self, a, b, c):
+		self.a = a
+		self.b = b
+		self.c = c
+
+	def solve(self):
+            avg = ( self.a + self.b + self.c ) /3
+            return int(avg)
+
+
+
+# Function - Sum of even number
+
+class Sum:
+	def __init__(self, n):
+		self.n = n
+
+	def solve(self):
+		sum = 0
+		for i in range(1, self.n+1):
+			if i % 2 == 0:
+				sum += i 
+			else:
+				continue
+
+		return sum
+
+
+# Function - x^n [pow]
+
+class Pow:
+	def __init__(self, x, n):
+		self.x = x
+		self.n = n
+
+	def pow(self):
+
+            return self.x ** self.n
+
 # ======================================================
 # ======================================================
 # ======================================================
