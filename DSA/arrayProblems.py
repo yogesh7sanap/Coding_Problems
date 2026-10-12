@@ -182,7 +182,7 @@ for _ in range(q):
     print(pre[y] - pre[x - 1])
 
 
-# Maximun sum with exactly K elements ====================================================
+# Maximun sum with exactly K elements - 1====================================================
 
 class MaximizeSum:
 	def __init__(self, arr, k):
@@ -201,8 +201,56 @@ class MaximizeSum:
 
 
 
-# ====================================================
-# ====================================================
+# Maximum product of two elements - 2 ====================================================
+
+# O(n) solution
+
+class MaxProduct:
+	def __init__(self, arr):
+		self.arr = arr
+
+	def solve(self):
+
+		first = second = 0
+
+		for num in self.arr:
+
+			if num >= first:
+				first,second = num, first
+			elif num > second:
+				second =num 
+
+		return (first-1) * (second-1)
+
+
+
+# sorting approach increases time complexity
+
+def maxProduct(nums):
+    nums.sort(reverse=True)
+    return (nums[0] - 1) * (nums[1] - 1)
+
+
+
+
+# Find N unique integers sum to zero - 3 ====================================================
+
+class SumZero:
+	def __init__(self, n):
+		self.n = n
+
+	def solve(self):
+
+          result = []
+          for i in range(1,  (self.n//2)+1):
+               result.append(i)
+               result.append(-i)
+
+          if self.n %2 ==1:
+               result.append(0)
+
+          return result
+
 
 # ====================================================
 
