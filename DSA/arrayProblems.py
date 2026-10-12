@@ -181,9 +181,23 @@ for _ in range(q):
     x, y = map(int, input().split())
     print(pre[y] - pre[x - 1])
 
-# ====================================================
 
+# Maximun sum with exactly K elements ====================================================
 
+class MaximizeSum:
+	def __init__(self, arr, k):
+		self.arr = arr
+		self.k = k
+
+	def solve(self):
+          mx = max (self.arr)
+          score = 0 
+
+          for _ in range(self.k):
+               score += mx
+               mx +=1
+
+          return score 
 
 
 
