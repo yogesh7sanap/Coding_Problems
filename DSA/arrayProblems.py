@@ -293,7 +293,55 @@ class SortedSquares:
           
           return result
 
-# ====================================================
+
+
+
+# Count Negative Numbers in Sorted Matrix ====================================================
+
+# O(m*n) solution
+
+class CountNegative:
+	def __init__(self, arr):
+		self.arr = arr
+
+	def solve(self):
+
+          count = 0
+
+          for row in self.arr:
+               for val in row:
+                    if val<0:
+                         count += 1
+          
+          return count 
+
+
+# O (m+n) solution
+
+class CountNegative:
+	def __init__(self, arr):
+		self.arr = arr
+
+	def solve(self):
+
+          row_length = len (self.arr)
+          col_length = len (self.arr[0])
+
+          row = 0 
+          col = col_length -1
+
+          count = 0
+
+          while row < row_length and col >= 0:
+               if self.arr[row][col] < 0:
+                    count += row_length - row
+                    col -= 1
+               else:
+                    row +=1
+
+          
+          return count
+
 
 # ====================================================
 
