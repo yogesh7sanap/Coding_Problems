@@ -343,8 +343,27 @@ class CountNegative:
           return count
 
 
-# ====================================================
 
+# Number of Rectangles That Can Form Largest Square ====================================================
+
+class CountGoodRectangles:
+	def __init__(self, arr):
+		self.arr = arr
+
+	def solve(self):
+
+          max_len_squares = 0
+          count = 0
+          for l,w in self.arr:
+               square_side = min(l,w)
+               
+               if square_side > max_len_squares:
+                    max_len_squares=square_side
+                    count = 1
+               elif square_side == max_len_squares:
+                    count += 1
+          
+          return count
 
 
 
