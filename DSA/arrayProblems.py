@@ -252,8 +252,46 @@ class SumZero:
           return result
 
 
-# ====================================================
 
+
+# Squares Of a Sorted Array ====================================================
+
+# O(nlog(n)) solution
+
+class SortedSquares:
+	def __init__(self, arr):
+		self.arr = arr
+
+	def solve(self):
+
+          squared = [ i**2 for i in self.arr]
+          squared.sort()
+
+          return squared
+
+
+# O(n) solution
+
+class SortedSquares:
+	def __init__(self, arr):
+		self.arr = arr
+
+	def solve(self):
+
+          n = len(self.arr)
+          result = [0]*n
+
+          left, right = 0, n-1
+
+          for i in range (n-1, -1, -1):
+               if abs(self.arr[left]) > abs(self.arr[right]):
+                    result[i] = self.arr[left] **2
+                    left +=1
+               else:
+                    result[i] = self.arr[right] **2
+                    right -=1
+          
+          return result
 
 # ====================================================
 
