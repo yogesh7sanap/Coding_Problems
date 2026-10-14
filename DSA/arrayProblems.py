@@ -344,7 +344,9 @@ class CountNegative:
 
 
 
+
 # Number of Rectangles That Can Form Largest Square ====================================================
+
 
 class CountGoodRectangles:
 	def __init__(self, arr):
@@ -368,7 +370,30 @@ class CountGoodRectangles:
 
 
 
-# ====================================================
+# Minimum Time Visiting All Points ====================================================
+
+
+class MinTimeToVisitAllPoints:
+	def __init__(self, arr):
+		self.arr = arr
+
+	def solve(self):
+          n = len (self.arr)
+          min_distance = 0 
+
+          for i in range(1, n):
+
+               x1, y1 = self.arr[i-1][0], self.arr[i-1][1]
+               x2, y2 = self.arr[i][0], self.arr[i][1]
+
+               dx = abs (x2-x1)
+               dy = abs (y2-y1)
+
+               min_distance += max (dx,dy)
+
+          return min_distance
+
+
 # ====================================================
 
 # ====================================================
