@@ -394,7 +394,32 @@ class MinTimeToVisitAllPoints:
           return min_distance
 
 
-# ====================================================
+
+
+# Fizz Buzz ====================================================
+
+
+class FizzBuzz:
+	def __init__(self, n):
+		self.n = n
+
+	def solve(self):
+
+		result =[]
+		
+		for i in range(1, self.n+1):
+			if i % 3 == 0 and i % 5 == 0:
+				result.append("FizzBuzz")
+			elif i % 3 ==0 :
+				result.append ("Fizz")
+			elif i % 5 ==0 :
+				result.append("Buzz")
+			else:
+				result.append(str(i))
+
+		return result
+
+
 
 # ====================================================
 
