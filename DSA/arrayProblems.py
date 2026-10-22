@@ -440,7 +440,7 @@ class UpdateMatrix:
                     if self.arr[i][j] == 0:
                          queue.append((i,j))
                     else:
-                         self.arr[i][j] == -1
+                         self.arr[i][j] = -1
 
           directions = [(1,0),(-1,0),(0,1),(0,-1)]
 
