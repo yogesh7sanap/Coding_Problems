@@ -423,6 +423,42 @@ class FizzBuzz:
 
 # Zero One Matrix ====================================================
 
+from collections import deque
+
+class UpdateMatrix:
+	def __init__(self, arr):
+		self.arr = arr
+
+	def solve(self):
+
+          m,n = len(self.arr), len(self.arr[0])
+
+          queue= deque()
+
+          for i in range(0,m):
+               for j in range(0,n):
+                    if self.arr[i][j] == 0:
+                         queue.append((i,j))
+                    else:
+                         self.arr[i][j] == -1
+
+          directions = [(1,0),(-1,0),(0,1),(0,-1)]
+
+          while queue:
+
+               row, col = queue.popleft()
+
+               for dir_row,dir_col in directions:
+
+                    next_row, next_col = row + dir_row, col + dir_col
+
+                    if (0<=next_row<m) and (0<= next_col<n) and (self.arr[next_row][next_col] ==-1):
+                         self.arr[next_row][next_col] = self.arr[row][col] + 1
+                         queue.append ((next_row, next_col))
+
+
+          return self.arr
+
 
 # ====================================================
 
