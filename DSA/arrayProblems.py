@@ -462,6 +462,30 @@ class UpdateMatrix:
 
 # Maximum Gap====================================================
 
+# o(nlogn) sorting based solution
+
+class MaximumGap:
+	def __init__(self, arr):
+		self.arr = arr
+
+	def solve(self):
+
+          # sorted_arr = sorted(self.arr, reverse =True)
+          sorted_arr = sorted(self.arr)
+
+          mx = 0
+          n = len(sorted_arr)
+
+          for i in range (n-2):
+
+               gap = abs(sorted_arr[i] - sorted_arr[i+1])
+               
+               if gap > mx :
+                    mx = gap 
+               
+          return mx
+
+
 
 # ====================================================
 
