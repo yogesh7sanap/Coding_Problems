@@ -486,6 +486,66 @@ class MaximumGap:
           return mx
 
 
+# o(n) solution using bucket sort
+
+# -- Maximum of the previous non-empty bucket → Minimum of the current non-empty bucket.
+# We don't need to compare numbers within the same bucket because the bucket size is chosen to ensure that the maximum gap cannot occur inside one bucket.
+
+# That's the optimization! --
+
+# -- How it works
+# 1. Find the minimum (1) and maximum (9).
+# 2. Create buckets to group numbers into ranges.
+# 3. Store only the minimum and maximum of each bucket.
+# 4. Skip empty buckets and calculate the gap between the current bucket's minimum and the previous non-empty bucket's maximum.
+# 5. Return the largest gap.
+# Complexity: \(O(n)\) time and \(O(n)\) extra space, assuming constant-time bucket operations. --
+
+
+class MaximumGap:
+    def __init__(self, arr):
+        self.arr = arr
+
+    def solve(self):
+        arr = self.arr
+        n = len(arr)
+
+        if n < 2:
+            return 0
+
+        minimum = min(arr)
+        maximum = max(arr)
+
+        if minimum == maximum:
+            return 0
+
+        bucket_size = max(1, (maximum - minimum) // (n - 1))
+        bucket_count = (maximum - minimum) // bucket_size + 1
+
+        buckets = [
+            [float('inf'), float('-inf')]
+            for _ in range(bucket_count)
+        ]
+
+        for num in arr:
+            index = (num - minimum) // bucket_size
+
+            buckets[index][0] = min(buckets[index][0], num)
+            buckets[index][1] = max(buckets[index][1], num)
+
+        max_gap = 0
+        previous_max = minimum
+
+        for bucket_min, bucket_max in buckets:
+
+            if bucket_min == float('inf'):
+                continue
+
+            max_gap = max(max_gap, bucket_min - previous_max)
+
+            previous_max = bucket_max
+
+        return max_gap
 
 # ====================================================
 
