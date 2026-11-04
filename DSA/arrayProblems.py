@@ -503,51 +503,59 @@ class MaximumGap:
 
 
 class MaximumGap:
-    def __init__(self, arr):
-        self.arr = arr
+	def __init__(self, arr):
+		self.arr = arr
 
-    def solve(self):
-        arr = self.arr
-        n = len(arr)
+	def solve(self):
 
-        if n < 2:
-            return 0
+		a = self.arr 
 
-        minimum = min(arr)
-        maximum = max(arr)
+		minimum = min (a)
+		maximum = max(a)
 
-        if minimum == maximum:
-            return 0
+		n = len(a)
 
-        bucket_size = max(1, (maximum - minimum) // (n - 1))
-        bucket_count = (maximum - minimum) // bucket_size + 1
+        
 
-        buckets = [
-            [float('inf'), float('-inf')]
-            for _ in range(bucket_count)
-        ]
+		if (minimum == maximum) or (n < 2):
+			return 0
 
-        for num in arr:
-            index = (num - minimum) // bucket_size
+        # calculate individual bucket size  
+		bucket_size = max(1, (maximum - minimum) // (n -1))
 
-            buckets[index][0] = min(buckets[index][0], num)
-            buckets[index][1] = max(buckets[index][1], num)
+        # total number of buckets required 
+		bucket_count = ((maximum - minimum) // bucket_size) +1
 
-        max_gap = 0
-        previous_max = minimum
+        # initialize bucket
+		bucket = [
+			[float('inf'), float('-inf')] for _ in range (bucket_count)
+		]
 
-        for bucket_min, bucket_max in buckets:
+        # traverse through array to fill values in bucket
+		for num in a :
+			index = (num - minimum) // bucket_size
 
-            if bucket_min == float('inf'):
-                continue
+			bucket[index][0]= min (bucket[index][0], num)
+			bucket[index][1]= max (bucket[index][1], num)
 
-            max_gap = max(max_gap, bucket_min - previous_max)
+		max_gap =0 
+		previous_max = minimum
 
-            previous_max = bucket_max
 
-        return max_gap
+        # traverse through bucket to find max_gap
+		for bucket_min, bucket_max in bucket:
 
-# ====================================================
+			if bucket_min == float ('inf'):
+				continue
+
+			max_gap = max (max_gap, bucket_min - previous_max)
+
+			previous_max = bucket_max
+
+		return max_gap
+
+
+# Matrix Diagonal Sum ====================================================
 
 
 
