@@ -520,26 +520,34 @@ class MaximumGap:
 		if (minimum == maximum) or (n < 2):
 			return 0
 
-        # calculate individual bucket size  
+        # -- calculate individual bucket size  
+        # We choose a bucket size of 2, which is smaller than that guaranteed maximum gap.
+        # This is important because the maximum gap cannot be hidden entirely inside one bucket.
 		bucket_size = max(1, (maximum - minimum) // (n -1))
 
-        # total number of buckets required 
+        # -- total number of buckets required 
+        # Without +1, as indexes start from 0,
+        # we would create only 4 buckets and potentially miss the maximum value.
 		bucket_count = ((maximum - minimum) // bucket_size) +1
 
-        # initialize bucket
+        # -- initialize bucket
+        # We only need its minimum and maximum to calculate the 
+        # gap between consecutive non-empty buckets.
 		bucket = [
 			[float('inf'), float('-inf')] for _ in range (bucket_count)
 		]
 
         # traverse through array to fill values in bucket
 		for num in a :
+
+            # Because our bucket indexing should start from zero, even when the smallest number isn't zero. // performs floor division and gives an integer index.
 			index = (num - minimum) // bucket_size
 
 			bucket[index][0]= min (bucket[index][0], num)
 			bucket[index][1]= max (bucket[index][1], num)
 
 		max_gap =0 
-		previous_max = minimum
+		previous_max = minimum # The smallest number is the starting point of our comparison.
 
 
         # traverse through bucket to find max_gap
@@ -548,6 +556,12 @@ class MaximumGap:
 			if bucket_min == float ('inf'):
 				continue
 
+            # We compare:
+            # - The largest gap found so far.
+            # - The difference between the current bucket's minimum and the previous non-empty bucket's maximum.
+
+            # Because the largest gap must occur between numbers in different buckets, 
+            # not inside one bucket.
 			max_gap = max (max_gap, bucket_min - previous_max)
 
 			previous_max = bucket_max
