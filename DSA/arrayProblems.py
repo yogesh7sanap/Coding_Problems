@@ -569,18 +569,38 @@ class MaximumGap:
 		return max_gap
 
 
+
+
 # Matrix Diagonal Sum ====================================================
 
 
+# O(n) solution
 
+class MatrixDiagonalSum:
+	def __init__(self, arr):
+		self.arr = arr
+
+	def solve(self):
+		a= self.arr 
+		n = len(a)
+
+		total = 0
+
+		for i in range (n):
+			total += a[i][i]
+			total += a[i][n-1-i]
+
+		if n %2 == 1:
+			middle_index = n // 2
+			total -= a[middle_index][middle_index]
+
+		return total	
+			
 
 
 # ====================================================
 # ====================================================
-
 # ====================================================
-
-
 # ====================================================
 
 
